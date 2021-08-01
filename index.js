@@ -17,7 +17,7 @@ const iconData = JSON.parse(fs.readFileSync("resources/rpgawesome.json")).map(it
     }
 })
 const svgstr = pug.compileFile("svg.pug", {pretty: true})({iconData: iconData, iconCount: iconData.length})
-fs.writeFileSync("spritesheet.svg", svgstr)
+fs.writeFileSync("sprite.svg", svgstr)
 
 function getResource(name) {
     const text = fs.readFileSync(`resources/${name}.json`)
