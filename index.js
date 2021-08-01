@@ -4,8 +4,16 @@ const pug = require("pug");
 const fs = require("fs");
 const sass = require("sass");
 
-const operators = ["+","-","*","/","%"]
-const modText = "?{Modifier|0,+ 0|+1, + 1|+2, + 2|+3,+ 3|+4,+ 4|+5,+ 5|+6,+ 6|+7,+ 7|-1,- 1|-2,- 2|-3,- 3|-4,- 4|-5,- 5|-6,- 6|-7,- 7|100% Sucesss,+ 24|100% Fail,- 24}"
+let i = -1024
+const iconData = JSON.parse(fs.readFileSync("resources/rpgawesome.json")).map(item => {
+    i += 1024
+    return {
+        name: item["_glyph-name"],
+        path: item["_d"],
+        pos: i
+    }
+})
+fs.writeFileSync("sprite.svg", pug.compileFile("svg.pug", {pretty: true})({iconData: iconData, iconCount: iconData.length}))
 
 function getResource(name) {
     const text = fs.readFileSync(`resources/${name}.json`)

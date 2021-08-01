@@ -1,0 +1,8 @@
+svg(xmlns="http://www.w3.org/2000/svg" width="1024" height=`${iconCount * 1024}` viewBox=`0 -64 1024 ${iconCount * 1024}`)
+    - let i = 0
+    each icon in iconData
+        symbol(id=icon.name)
+            path(d=icon.path)
+        use(xlink:href=`#${icon.name}` x="0" y=`${i * 1024}`)
+        - i++
+            

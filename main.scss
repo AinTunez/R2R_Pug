@@ -155,7 +155,7 @@ $h: 2em;
 
     input[name=attr_icon][value=#{$name}]~span span[name=icon],
     .ico.#{$name} {
-        background-image: url('https://cdn.jsdelivr.net/gh/AinTunez/R2R_Pug@master/resources/icons/#{$name}.svg') !important;
+        background-image: url('https://cdn.jsdelivr.net/gh/AinTunez/R2R_Pug@master/sprite.svg##{$name}-view') !important;
     }
 }
 
