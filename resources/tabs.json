@@ -1,0 +1,7 @@
+[
+    {"name": "overview", "display": "Overview"},
+    {"name": "inventory", "display": "Inventory"},
+    {"name": "ailments", "display": "Ailments"},
+    {"name": "perks", "display": "Perks"},
+    {"name": "actions", "display": "Actions"}
+]

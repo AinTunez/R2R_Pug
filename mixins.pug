@@ -1,0 +1,83 @@
+mixin hiddenInput(name)
+    input(type="hidden" name=`attr_${name}`)&attributes(attributes)
+
+mixin pictos(text)
+    span.pictos&attributes(attributes) #{text}
+
+mixin actionBtn(name)
+    button(type="action" name=`act_${name}`)&attributes(attributes)
+        block
+
+mixin attrSpan(name)
+    span(name=`attr_${name}`)&attributes(attributes)
+
+mixin quickbarVit(vit)
+    div.vit
+        span #{vit.name}
+        span(name=`attr_${vit.name}`)
+        | /
+        span(name=`attr_${vit.name}_max`)
+
+mixin quickbarStat(stat)
+    div.stat
+        span #{stat}
+        span(name=`attr_${stat}`)
+
+mixin spinner(name)
+    .spinner
+        button(type="action" name=`act_${name}dn`)
+            span.pictos }
+        span(name=`attr_${name}`)
+        button(type="action" name=`act_${name}up`)
+            span.pictos {
+        input(type="hidden" name=`attr_${name}`)&attributes(attributes)
+
+mixin vitItem(vit)
+    div.vitItem
+        div
+            div.header Current
+            +spinner(vit.name)(min=vit.min value=vit.value)
+        div
+            div.header Max
+            +spinner(vit.name + "_max")(min=vit.min value=vit.value)
+
+mixin perkGroup(group)
+    div(class=`perkGroup ${group.name}`)
+        +hiddenInput(`perkList_${group.name}`)
+        div.flexContainer
+            select.perkList(name=`attr_perkList_${group.name}` size="2")
+                each perk in group.list
+                    option(value=perk.name.replace(/\W+/g,"")) #{perk.name}
+        each perk in group.list 
+            .perkItem(class=perk.name.replace(/\W+/g,""))
+                div 
+                    h4 #{perk.name}
+                    +actionBtn(`selectPerk_${perk.name.replace(/\W+/g,"")}`) #{"Select Perk"}
+                ul 
+                    +perkInfo(perk.info)
+
+mixin perkInfo(info)
+    - const type = typeof info
+    case type
+        when "string"
+            li #{info}
+        default
+            ul
+                each item in info
+                    +perkInfo(item)
+
+mixin rollBtn(macro, text, modifier)
+    button(type="roll") #{text}
+
+mixin ra(glyph)
+    - const g = glyph.split(" ").map(e => "ra-" + e).join(" ")
+    i.ra(class=g)
+
+mixin iconPicker
+    h3(style="margin-left: 20px") Icon
+    div.iconPicker
+        each path, name in icons
+            button.ra(style="height: 2em; width: 2em")
+                - let p = path
+                svg(style="fill: currentColor" width="1024px" height="1024px" viewBox="0 -64 1024 1024")
+                    path(d=p)

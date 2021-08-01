@@ -1,0 +1,188 @@
+.ra {
+    font-family: RPGAwesome;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    speak: none;
+    text-transform: none;
+}
+
+/* makes the font 33% larger relative to the icon container */
+.ra-lg {
+    width: 1.3333333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+}
+
+.ra-2x {
+    height: 2em;
+    width: 2em;
+}
+
+.ra-3x {
+    height: 3em;
+    width: 3em;
+}
+
+.ra-4x {
+    height: 4em;
+    width: 4em;
+}
+
+.ra-5x {
+    height: 5em;
+    width: 5em;
+}
+
+.ra-fw {
+    text-align: center;
+    width: 1.2857142857em;
+}
+
+.ra-ul {
+    list-style-type: none;
+    margin-left: 2.1428571429em;
+    padding-left: 0;
+}
+
+.ra-ul>li {
+    position: relative;
+}
+
+.ra-li {
+    left: -2.1428571429em;
+    position: absolute;
+    text-align: center;
+    top: 0.1428571429em;
+    width: 2.1428571429em;
+}
+
+.ra-li.ra-lg {
+    left: -1.8571428571em;
+}
+
+.ra-border {
+    border: solid 0.08em #eee;
+    border-radius: .1em;
+    padding: .2em .25em .15em;
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+.ra.pull-left {
+    margin-right: .3em;
+}
+
+.ra.pull-right {
+    margin-left: .3em;
+}
+
+.ra-spin {
+    -webkit-animation: ra-spin 2s infinite linear;
+    animation: ra-spin 2s infinite linear;
+}
+
+@-webkit-keyframes ra-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes ra-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+.ra-rotate-90 {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.ra-rotate-180 {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.ra-rotate-270 {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.ra-flip-horizontal {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+    -webkit-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+.ra-flip-vertical {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    -webkit-transform: scale(1, -1);
+    -ms-transform: scale(1, -1);
+    transform: scale(1, -1);
+}
+
+:root .ra-rotate-90,
+:root .ra-rotate-180,
+:root .ra-rotate-270,
+:root .ra-flip-horizontal,
+:root .ra-flip-vertical {
+    filter: none;
+}
+
+.ra-stack {
+    display: inline-block;
+    height: 2em;
+    line-height: 2em;
+    position: relative;
+    vertical-align: middle;
+    width: 2em;
+}
+
+.ra-stack-1x,
+.ra-stack-2x {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.ra-stack-1x {
+    line-height: inherit;
+}
+
+.ra-stack-2x {
+    font-size: 2em;
+}
+
+.ra-inverse {
+    color: #fff;
+}

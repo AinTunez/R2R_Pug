@@ -1,0 +1,685 @@
+[
+    {
+        "name": "militant",
+        "list": [{
+                "name": "Marksman",
+                "info": [
+                    "When you roll to Engage in combat with a ranged weapon at it’s proper range you can choose to reroll one die.",
+                    "This new result must be accepted.",
+                    "This perk may only be used once per combat scenario."
+                ]
+            },
+            {
+                "name": "Dead or Alive",
+                "info": [
+                    "You have the ability to deal non-lethal damage with a lethal weapon."
+                ]
+            },
+            {
+                "name": "Squad Leader",
+                "info": [
+                    "When you Act Defensively in combat and roll a result of 10+ you may give yourself or one of your allies +1 to their next roll during combat.",
+                    "This takes effect in the next round of combat."
+                ],
+                "req": "Wits + 1"
+            },
+            {
+                "name": "Master Tactician",
+                "info": [
+                    "While engaged in combat you can attempt to find some weakness in your aggressor to exploit. When you choose to Act Defensively and roll a result of 10+ you grant each of your allies +1 to the result of their next roll made to engage your aggressors.",
+                    "This takes effect in the next round of combat."
+                ],
+                "req": "Squad Leader"
+            },
+            {
+                "name": "Black Belt",
+                "info": [
+                    "When you Engage in combat against an opponent at close range while wielding a melee weapon or unarmed you may choose to reroll one die.",
+                    "This trait can only be used once per combat scenario.",
+                    "The new result must be accepted."
+                ],
+                "req": "Body 1"
+            },
+            {
+                "name": "Brawler",
+                "info": "Your unarmed attacks can be lethal.",
+                "req": "Body + 2"
+            },
+            {
+                "name": "Cover Fire",
+                "info": [
+                    "When you Act Defensively in combat with a ranged weapon equipped and you roll a 10 + you may choose to take this action, forcing opponents to be more inaccurate in their attacks.",
+                    "Doing so will halve all Damage received by other players this round (rounded up)."
+                ]
+            },
+            {
+                "name": "Die Hard",
+                "info": [
+                    "If you receive Damage in combat that would normally render you unconscious you can choose to keep fighting.",
+                    "If you are reduced to 0 hitpoints, you still die",
+                    "Any non lethal damage you receive while only having 1 hitpoint remaining will render you unconscious."
+                ],
+                "req": "Body + 2 or Wits + 2"
+            },
+            {
+                "name": "Weapons Master",
+                "info": [
+                    "Choose a weapon with a Range of Melee (e.g., Sword, Club, Staff, Knife, etc.). When you Engage in combat with this weapon you may choose to reroll 1 die.",
+                    "This new result must be accepted.",
+                    "This perk can only be used once per combat scenario.",
+                    "This Perk cannot be used on the same attack roll as Black Belt."
+                ],
+                "req": "Black Belt"
+            },
+            {
+                "name": "Always Shoots First",
+                "info": [
+                    "So long as you are aware of your target, you cannot be Ambushed.",
+                    "If a target turns hostile while you're conversing with them, you are granted the ability to Ambush them before they can act."
+                ],
+                "req": "Wits + 2"
+            },
+            {
+                "name": "Combat Reflexes",
+                "info": "When you Act Defensively, you may choose to roll + Body instead of + Wits.",
+                "action": {
+                    "name": "Combat Reflexes",
+                    "desc": "Block, dodge, retreat, or regroup to assist an ally.",
+                    "category": "physical",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Body",
+                        "header": "$C defends.",
+                        "success": "$C safely disengages from combat OR finds a better vantage point and gains +1 to their next combat action. +1 can be passed to an ally if they're in communication.",
+                        "partial": "$C takes no damage OR takes half damage and disengages from combat.",
+                        "failure": "$C takes full damage."
+                    }
+                }
+            },
+            {
+                "name": "Grappler",
+                "info": [
+                    "When you roll a 10 + when Engaging with a target roughly your size in an attempt to grapple them they will become entangled and unable to attempt to escape the grapple for a number of rounds equal to your body stat.",
+                    "For the following turns you can choose to (a) move the target with you; (b) knock out the target; or (c) kill the target."
+                ]
+            }
+        ]
+    },
+    {
+        "name": "statistical",
+        "list": [{
+                "name": "Fitness Regiment",
+                "info": [
+                    "Gain +1 to Body.",
+                    "You can take this perk up to 3 times."
+                ]
+            },
+            {
+                "name": "Disciplined",
+                "info": [
+                    "Gain +1 to Wits.",
+                    "You can take this perk up to 3 times."
+                ]
+            },
+            {
+                "name": "Well Read",
+                "info": [
+                    "Gain +1 to Smarts.",
+                    "You can take this perk up to 3 times."
+                ]
+            },
+            {
+                "name": "Confidence Boost",
+                "info": [
+                    "Gain +1 to Charm.",
+                    "You can take this perk up to 3 times."
+                ]
+            },
+            {
+                "name": "Touch of the Unknown",
+                "info": [
+                    "Gain +1 to Strange.",
+                    "You can take this perk up to 3 times."
+                ]
+            }
+        ]
+    },
+    {
+        "name": "medical",
+        "list": [{
+                "name": "Field Medic",
+                "info": [
+                    "When attempting to heal a biological target, roll + Smarts.",
+                    [
+                        "SUCCESS: The target heals for 2 hitpoints.",
+                        "PARTIAL: The target heals for 1 hitpoint.",
+                        "FAILURE: The target takes 1 additional Damage."
+                    ]
+                ],
+                "action": {
+                    "name": "Heal (Field Medic)",
+                    "desc": "Heal a biological target.",
+                    "category": "support",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Smarts",
+                        "header": "Field Medic",
+                        "success": "Target heals for 2 hitpoints.",
+                        "partial": "Target heals for 1 hitpoint.",
+                        "failure": "Target takes 1 damage."
+                    }
+                }
+            },
+            {
+                "name": "Doctor",
+                "info": [
+                    "Your study of medicine gives you the ability to treat wounds, injuries and illnesses.",
+                    "You are able to treat Injuries that require a Doctor.",
+                    "At the beginning of every day roll + Smarts. You gain a pool of points equal to the results.",
+                    "Spend 1 point to heal a target 1 hitpoint, or spend 5 points to treat an injury or disease.",
+                    "These healing points can only be spent when you have access to the necessary equipment and are in a space where you and the patient can rest.",
+                    "The GM will decide how much treatment is needed to fully cure the injury or disease."
+                ],
+                "req": "Smarts + 1"
+            },
+            {
+                "name": "Symptomatic Sleuth",
+                "info": [
+                    "When attempting a Smarts roll to determine the cause of a medical symptom or cause of death, a FAILURE will instead be treated as a PARTIAL."
+                ],
+                "req": "Doctor"
+            }
+        ]
+    },
+    {
+        "name": "technical",
+        "list": [{
+                "name": "Can We Fix It?",
+                "info": [
+                    "Given the proper space, equipment, and time, you may repair gear or other devices by rolling + Smarts.",
+                    [
+                        "SUCCESS: The target can be restored to nearly new conditions within a day.",
+                        "PARTIAL: The target can either be restored by 25% of its armor in that time frame, take up to a week to fully repair, or may require additional resources to fully restore.",
+                        "FAILURE: The target is beyond your current capabilities to repair and may need to be scrapped for resources or brought to a better equipped facility."
+                    ]
+                ],
+                "action": {
+                    "name": "Repair (Can We Fix It?)",
+                    "desc": "Repair gear or other devices.",
+                    "category": "support",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Smarts",
+                        "header": "Can We Fix It?",
+                        "success": "The device or gear can be restored to nearly new conditions within a day.",
+                        "partial": "The target can either be restored by 25% of its armor in that time frame, take up to a week to fully repair, or may require additional resources to fully restore.",
+                        "failure": "The target is beyond $C's current capabilities to repair. It may need to be scrapped for resources or brought to a better equipped facility."
+                    }
+                },
+                "req": "Smarts + 1"
+            },
+            {
+                "name": "Patch Job",
+                "info": [
+                    "If something becomes damaged while in the field you may attempt to patch it by rolling + Smarts.",
+                    [
+                        "SUCCESS: Restore 2 Armor to the object.",
+                        "PARTIAL: Restore 1 Armor to the object",
+                        "FAILURE: Deal 1 additional Damage to the object."
+                    ]
+                ],
+                "action": {
+                    "name": "Patch Job",
+                    "desc": "Hastily repair a broken object.",
+                    "category": "support",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Smarts",
+                        "header": "Repair (Patch Job)",
+                        "success": "Target heals for 2 hitpoints.",
+                        "partial": "Target heals for 2 hitpoint.",
+                        "failure": "Target takes 1 damage."
+                    }
+                }
+            },
+            {
+                "name": "Structual Weak Points",
+                "info": [
+                    "When rolling to Engage a mechanical target you can choose to roll + Smarts instead of + Body."
+                ]
+            },
+            {
+                "name": "Sabotage",
+                "info": [
+                    "When you choose to interact with a mechanical object, you may attempt to sabotage said object by rolling + Smarts.",
+                    [
+                        "SUCCESS: Sabotage is successful.",
+                        "PARTIAL: Sabotage is only half-successful.",
+                        "FAILURE: You fail in your attempt or get caught in the act."
+                    ],
+                    "Options for sabotage",
+                    [
+                        "Set a trap that triggers when the object is used.",
+                        "Break the device (requires someone to repair it to make it function).",
+                        "More specific tasks (GM's discretion)."
+                    ]
+                ],
+                "req": "Can We Fix It?",
+                "action": {
+                    "name": "Sabotage",
+                    "category": "clandestine",
+                    "desc": "Break a mechnical object or rig it to spring a trap when used.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Smarts",
+                        "header": "Sabotage",
+                        "success": "Successfully sabotaged.",
+                        "partial": "Partially sabotaged.",
+                        "failure": "Something went wrong during $C's sabotage."
+                    }
+                }
+            },
+            {
+                "name": "Upgrade",
+                "max": 5,
+                "info": [
+                    "Attempt to upgrade a piece of gear by rolling + Smarts.",
+                    [
+                        "SUCCESS: You successfully modify the gear in one day.",
+                        "PARTIAL: Either the process takes up to a week (during which the gear is unusable) or the upgrade is aborted.",
+                        "FAILURE: You break the piece of equipment and will need to repair it before it can function again."
+                    ],
+                    "You can only upgrade one piece of Equipment at a time.",
+                    "You can take this Perk multiple times.",
+                    "You can upgrade each piece of Equipment as many times as you have taken this perk.",
+                    "Potential upgrades include:",
+                    [
+                        "Adding 1 Shield",
+                        "Adding the Insulated trait.",
+                        "Adding the Incendiary, Electric, Stun, or Cold trait.",
+                        "Adding 2 Armor",
+                        "Removing the Loud trait"
+                    ]
+                ],
+                "action": {
+                    "name": "Upgrade Gear",
+                    "category": "support",
+                    "desc": "Ugrade a piece of gear.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Smarts",
+                        "header": "Upgrade Gear",
+                        "success": "$C successfully modifies the gear.",
+                        "partial": "$C experiencese an unexpected complication upgrading the gear. They can abort the process or render the gear unusable for one week while the upgrade is in progress.",
+                        "failure": "$C fails miserably and breaks the gear. It must be repaired before using it again."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "name": "social",
+        "list": [{
+                "name": "Fast Friends",
+                "info": [
+                    "The first time you introduce yourself to an NPC, they will be warmer to you than they would be to the average person. Even a normally hostile NPC will give you a chance.",
+                    "Additionally, you gain + 1 to the result of the first + Charm roll you make with an NPC."
+                ],
+                "req": "Charm + 1"
+            },
+            {
+                "name": "A Way With Words",
+                "info": [
+                    "When you attempt to manipulate a person you can choose to reroll a die.",
+                    "The new result must be accepted."
+                ],
+                "req": "Fast Friends"
+            },
+            {
+                "name": "Great Motivator",
+                "info": [
+                    "You may attempt to draw inner potential from your allies by rolling + Charm.",
+                    [
+                        "SUCCESS: Target ally gains + 2 on a single roll of their choosing.",
+                        "PARTIAL: Target ally gains + 1 on a single roll of their choosing.",
+                        "FAILURE: You miss the mark and they gain no benefit."
+                    ],
+                    "You may attempt this ability once per ally, per day."
+                ],
+                "action": {
+                    "name": "Motivate Ally",
+                    "category": "support",
+                    "desc": "Give your ally an advantage on their next roll.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Charm",
+                        "header": "Great Motivator",
+                        "success": "Target ally gains + 2 on a single roll.",
+                        "partial": "Target ally gains + 1 on a single roll.",
+                        "failure": "No benefits."
+                    }
+                }
+            },
+            {
+                "name": "Multilingual",
+                "info": [
+                    "You become fluent in one additional language, becoming able to speak/read/write it.",
+                    "This Perk may be taken multiple times, learning a new language each time."
+                ],
+                "max": 99
+            },
+            {
+                "name": "I Know A Guy",
+                "info": [
+                    "If you find yourself in need of an object or information, you know just who to call. Roll + Charm.",
+                    [
+                        "SUCCESS: Your contact has what you need, or at least knows where you can get it.",
+                        "PARTIAL: Your contact is willing to help but may require something in exchange.",
+                        "FAILURE: Your contact either doesn’t know anything or doesn't want to help."
+                    ]
+                ],
+                "action": {
+                    "name": "Call A Guy",
+                    "category": "charm",
+                    "desc": "Call somebody knowledgeable to get an object or piece of information.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Charm",
+                        "header": "$C calls somebody.",
+                        "success": "$C's contact readily helps.",
+                        "partial": "$C's contact can help, but needs some motivation to do so.",
+                        "failure": "$C's contact provides no help."
+                    }
+                }
+            },
+            {
+                "name": "Takes One to Know One",
+                "info": [
+                    "You always know when you are being lied to. You don’t always know the extent of the lie, but your gut always knows."
+                ],
+                "req": "Wits + 2"
+            },
+            {
+                "name": "Like A Book",
+                "info": [
+                    "When you roll to attempt to read a person, a FAILURE will instead be treated as a PARTIAL."
+                ],
+                "req": "Takes One to Know One"
+            },
+            {
+                "name": "Casanova",
+                "info": [
+                    "If you attempt a + Charm roll on a NPC that could potentially be attracted to your PC, you can flaunt your attractive properties to gain a + 1 to your roll."
+                ]
+            },
+            {
+                "name": "Intimidation Tactics",
+                "info": [
+                    "When rolling to manipulate a person, you may choose to roll + Body instead of + Charm."
+                ],
+                "action": {
+                    "name": "Intimidation Tactics",
+                    "category": "clandestine",
+                    "desc": "Convince somebody by physical threat instead of social charm.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Body",
+                        "header": "$C tries to look tough.",
+                        "success": "$C intimidates the target.",
+                        "partial": "Target feels uneasy, but stands firm.",
+                        "failure": "Target isn't intimidated by $C at all."
+                    }
+                }
+            },
+            {
+                "name": "Mimicry",
+                "info": [
+                    "You have the ability to mimic a voice you have heard.",
+                    "When you attempt deception using this perk, you may choose to reroll 1 die.",
+                    "You must accept the new result."
+                ]
+            }
+        ]
+    },
+    {
+        "name": "roguish",
+        "list": [{
+                "name": "Smuggler",
+                "info": [
+                    "You have the ability to hide any object that can be held in one hand from detection on your person."
+                ]
+            },
+            {
+                "name": "Didn't See That Coming",
+                "info": [
+                    "When you decide to ambush a target you are conversing with, you can choose to roll + Charm instead of + Body."
+                ]
+            },
+            {
+                "name": "Fighting Dirty",
+                "info": [
+                    "When engaging a target in melee combat, you can choose to roll + Wits instead of + Body."
+                ],
+                "action": {
+                    "name": "Fighting Dirty",
+                    "category": "clandestine",
+                    "desc": "Directly confront the opponent ahead of you.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Wits",
+                        "header": "$C engages the target.",
+                        "success": "Target takes damage.",
+                        "partial": "Target and $C both take damage.",
+                        "failure": "$C takes damage."
+                    }
+                }
+            },
+            {
+                "name": "Where'd They Go",
+                "info": [
+                    "When you Act Defensively in a combat scenario and get a SUCCESS, you can choose to slip into an unnoticed position rather than run away entirely.",
+                    "Doing so will guarantee your next combat Action results in taking no Damage no matter the result rolled.",
+                    "If you choose to Engage a target from this position it is considered an Ambush."
+                ]
+            },
+            {
+                "name": "No Such thing As Luck",
+                "info": [
+                    "When partaking in a game of chance (e.g., poker, slots, blackjack, etc.) you are familiar with, you can choose to use roll + any of your stats instead of just making a chance roll.",
+                    "You can choose to roll + Body to use your reflexes and cheat your way to victory.",
+                    "You can choose to roll + Wits to use your observation skills to outwit your opponents.",
+                    "You can choose to roll + Smarts by using your brain to play the odds.",
+                    "You can choose to roll + Charm by using your gift of speech or performance to gain an edge in the game.",
+                    "You can choose to roll + Strange to use your otherworldly abilities to gain an edge."
+                ]
+            },
+            {
+                "name": "Just One of Those Faces",
+                "info": [
+                    "You tend not to leave much of an impression. Most NPCs won’t remember you after a day or so, giving you a chance at a fresh start.",
+                    "If you are attempting to evade pursuers in a crowded area, you can choose to blend in with the crowd rather than rolling to run or hide.",
+                    "You can choose to remind an NPC of who you are to jog their memory.",
+                    "NPCs with whom you have built a friendship or made a direct enemy will still remember you."
+                ]
+            }
+        ]
+    },
+    {
+        "name": "strange",
+        "list": [{
+                "name": "Mysterious Awakening: Empath",
+                "info": [
+                    "You sometimes can feel the emotions of those nearby. When consciously focused, you can choose to roll + Strange when attempting to get a read on a person."
+                ],
+                "req": "Strange + 1"
+            },
+            {
+                "name": "Mysterious Awakening: Firestarter",
+                "info": [
+                    "You can manipulate small flames within 10 feet of you, enough to freely light or snuff out a candle. With a conscious effort you can turn this into an attack by rolling + Strange."
+                ],
+                "req": "Strange + 1",
+                "action": {
+                    "name": "Flame Attack",
+                    "category": "strange",
+                    "desc": "Manipulate small flames to attack a target.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Strange",
+                        "header": "$C attacks with a burst of flames.",
+                        "success": "Target takes damage if not immune to flames.",
+                        "partial": "$C takes damage, and the target takes damage if not immune to fire.",
+                        "failure": "$C takes damage."
+                    }
+                }
+            },
+            {
+                "name": "Mysterious Awakening: Telekinetic",
+                "info": [
+                    "You can manipulate any object that weighs less than a pound within 10 feet of you. These objects are slow moving and can’t be used as projectile weapons."
+                ],
+                "req": "Strange + 1"
+            },
+            {
+                "name": "Telepath",
+                "info": [
+                    "You have the ability to communicate with any creature telepathically within 100 feet, as long as you are aware of them. By looking a target creature in the eyes you may attempt to read the creature’s surface level thoughts by rolling + Strange.",
+                    [
+                        "SUCCESS: You hear all surface level thoughts and the target is none the wiser.",
+                        "PARTIAL: You either gain access but the target is alerted to your presence, or you fail to gain access to their thoughts.",
+                        "FAILURE: You fail, your target is alerted to your presence, and blocks future attempts."
+                    ]
+                ],
+                "req": "Mysterious Awakening: Empath",
+                "action": {
+                    "name": "Telepath",
+                    "desc": "Read surface level thoughts of a target creature within 100 feet.",
+                    "category": "strange",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Strange",
+                        "header": "Telepath",
+                        "success": "$C hears the target's thoughts.",
+                        "partial": "$C hears the target's thoughts, but the target is alerted.",
+                        "failure": "The target is alerted and blocks future attempts."
+                    }
+                }
+            },
+            {
+                "name": "Mind Trick",
+                "info": [
+                    "When attempting to manipulate a person to do a simple task, you may choose to roll + Strange instead of + Charm.",
+                    [
+                        "SUCCESS: The target performs the task and is none the wiser.",
+                        "PARTIAL: The target performs the task, but within an hour it will quickly realize it has been tricked.",
+                        "FAILURE: Nothing happens, or the target becomes aware of the psychic attack (GM discretion)"
+                    ],
+                    "Simple tasks might include believing an obvious lie, opening a door, giving information, letting you pass, giving an item, etc."
+                ],
+                "req": "Mysterious Awakening: Empath",
+                "action": {
+                    "name": "Mind Trick",
+                    "category": "strange",
+                    "desc": "Make a biological creature do a simple task.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Strange",
+                        "header": "$C tries to make the target do something.",
+                        "success": "The target performs the task.",
+                        "partial": "The target performs the task, but will soon become aware.",
+                        "failure": "Nothing happens. The target may be aware of the psychic attack."
+                    }
+                }
+            },
+            {
+                "name": "Mind Control",
+                "info": [
+                    "You can attempt to dominate the mind of a biological creature, making it your willing slave, by rolling + Strange.",
+                    [
+                        "SUCCESS: You gain control of the target and can issue it any command while it remains under your control.",
+                        "PARTIAL: You may issue the creature one command and it will follow that order while it remains under your control.",
+                        "FAILURE: You fail in your attempt to dominate the creature and it becomes aware of what you did."
+                    ]
+                ],
+                "req": "Mind Trick",
+                "action": {
+                    "name": "Mind Control",
+                    "category": "strange",
+                    "desc": "Dominate and enslave the mind of a biological creature.",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Strange",
+                        "header": "$C tries to control the target.",
+                        "success": "$C gains control of the target and can issue multiple commands until the link is broken.",
+                        "partial": "$C gains brief control of the target and can issue one command.",
+                        "failure": "The target is unaffected and is aware of $C's attempt."
+                    }
+                }
+            },
+            {
+                "name": "Empowered Telekinesis",
+                "info": [
+                    "You can manipulate objects up to 100 lbs within 20 feet of you.",
+                    "Objects up to 10 lbs require no effort; heavier objects require a roll.",
+                    "If the object is a melee weapon, it can be used to attack within that range, rolling + Strange instead of + Body.",
+                    "This perk may be used to push, pull or lift another character or living creature but will require a Strange roll to do so.",
+                    "This perk can be taken multiple times, doubling the range and multiplying the weight increments by 5 for each additional level.",
+                    "Additionally, if this ability is used to attack, add 1 Damage for each additional time this perk was taken."
+                ],
+                "req": "Mysterious Awakening: Telekinetic",
+                "action": {
+                    "name": "Telekinetic Attack",
+                    "desc": "Attack by telekinetically controlling a distant object.",
+                    "category": "strange",
+                    "macro": {
+                        "roll": "2d6",
+                        "stat": "Strange",
+                        "header": "$C tries to attack telekinetically with a distant object.",
+                        "success": "Target takes damage.",
+                        "partial": "Target and $C both take damage.",
+                        "failure": "$C takes damage."
+                    }
+                }
+            },
+            {
+                "name": "Telekinetic Barrier",
+                "info": [
+                    "Gain + 1 Shield."
+                ],
+                "req": "Strange + 2 & Mysterious Awakening: Telekinetic"
+            },
+            {
+                "name": "Always Been Lucky",
+                "info": [
+                    "When you Act Defensively, you can choose to roll + Strange instead of + Wits."
+                ]
+            }
+        ]
+    },
+    {
+        "name": "misc",
+        "list": [{
+                "name": "Driver",
+                "info": [
+                    "While operating any land vehicle, you have the following benefits:",
+                    [
+                        "Any land vehicle you operate has + 1 Shield.",
+                        "You may choose to roll either + Body or + Wits for any maneuvers made to operate the vehicle (racing, stunts, attacking a target with the vehicle, etc)"
+                    ]
+                ]
+            },
+            {
+                "name": "Pilot",
+                "info": [
+                    "You have the ability to operate aircraft."
+                ]
+            },
+            {
+                "name": "Animal Whisperer",
+                "info": [
+                    "You have the ability to befriend beasts as you could any other NPC. Additionally, the first time you attempt a charm roll to manipulate a beast, you can choose to reroll one of the dice. You must accept the new result."
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,178 @@
+include mixins
+
++hiddenInput("activePerks")(class="activePerks")
+i.ra.ra-acorn
+
+.main
+    input(type="hidden" class="activeTab" name="attr_activeTab" value="overview")
+    .statusBar
+        each vit in vits
+            +quickbarVit(vit)
+        each stat in stats
+            +quickbarStat(stat)
+    .tabs
+        each tab in tabs 
+            +actionBtn(`show_tab_${tab.name}`) #{tab.display}
+    .tabContent.overview
+        div(style="display: grid; grid-template-columns: 260px 302px calc(100% - 560px);")
+            .vitDisplay.infoSection
+                each vit in vits
+                    .vitItemBlock 
+                        div #{vit.name}
+                        +vitItem(vit)
+            .statDisplay.infoSection
+                h3 Stats
+                .statRow.avail
+                    .header Stat Points
+                    +spinner("stat_points")(min="0" value="0")
+                    +actionBtn(`roll_null`)(class="rollBtn" style="visibility: hidden")
+                    span Buff/Debuff
+                each stat in stats
+                    .statRow 
+                        .header #{stat}
+                        +spinner(stat)(min="-2" value="0")
+                        +actionBtn(`roll_${stat}`)(class="rollBtn")
+                        +spinner(`${stat}_buff`)(value="0")
+            div.infoSection
+                .ailments(style="margin-left: 10px; margin-top: 5px;")
+                    h3(style="display: inline-block") Ailments
+                    fieldset.repeating_injuries
+                    span.injured INJURED 
+                    fieldset.repeating_illnesses
+                    span.sick SICK
+                    span.healthy HEALTHY 
+                hr(style="margin: 10px 10px;")
+                #overview_gear(style="margin-left: 10px")
+                    h3 #{"Gear & Equipment"}
+                    fieldset.repeating_gear
+                        input(type="checkbox" style="display: none" name="attr_active" checked)
+                        button
+                            span(name="attr_name")
+        hr
+        h3 Perks 
+        .activePerkDetails.rep_activeperks
+            fieldset.repeating_activeperks
+                +hiddenInput("perkdisplayname")
+                +hiddenInput("perkname")
+                +hiddenInput("details")
+                +actionBtn("displaybtn")
+                    +attrSpan("perkdisplayname")
+                +attrSpan("details")
+    .tabContent.perks
+        .activePerkDisplay
+            h3 Active Perks 
+            .rep_activeperks
+                fieldset.repeating_activeperks
+                    +hiddenInput("perkdisplayname")
+                    +hiddenInput("perkname")
+                    +hiddenInput("groupname")
+                    +hiddenInput("details")
+                    +actionBtn("displaybtn")
+                        +attrSpan("perkdisplayname")
+                    +actionBtn("removebtn")
+                        +pictos("D")
+        .perkBrowser 
+            +hiddenInput("perkListSelect")(id="perkListDisplay" value="militant")
+            hr
+            .perkBrowserHeader 
+                h3 Perk Browser 
+                div Category:
+                select(id="perkListSelect" name="attr_perkListSelect" value="militant")
+                    each group in perks
+                        option(value=group.name) #{group.name}
+            .perkListContainer
+                each group in perks
+                    +perkGroup(group)
+    .tabContent.actions
+        .rep-block.actions
+            fieldset.repeating_actions
+                +hiddenInput("icon")(value="i-help")
+                +hiddenInput("editing")(class="editing" value="true")
+                +actionBtn("edititem")(class="edit")
+                span.ra.ra-fw.ra-3x.icon(name="attr_icon" style="transform: rotate(180deg); vertical-align: middle; margin-left: 25px;")
+                input(type="text" name="attr_title" placeholder="Action Name")
+                +actionBtn("roll")(class="roll")
+                    span.d6 l
+                +pictos("&")(style="display: inline-block; margin-left: 6px; margin-right: 2px;")
+                input(type="number" name="attr_mod" value="0" step="1")
+                .actionBuilder
+                    .actParamRow.fullwidth
+                        span Subtitle
+                        input(type="text" name="attr_subtitle" placeholder="@{character_name} tries their best...")
+                    .actParamRow.fullwidth
+                        span Roll
+                        input(type="text" name="attr_roll" placeholder="2d6 + @{Body}")
+                    .actParamRow.fullwidth
+                        span Success
+                        input(type="text" name="attr_success" placeholder="@{character_name} succeeds!")
+                    .actParamRow.fullwidth
+                        span Partial
+                        input(type="text" name="attr_partial" placeholder="@{character_name} partially succeeds")
+                    .actParamRow.fullwidth
+                        span Failure
+                        input(type="text" name="attr_failure" placeholder="@{character_name} fails miserably.")    
+                    +iconPicker
+    .tabContent.inventory
+        h3 #{"Gear & Equipment"}
+        div.rep-block
+            .inv-header 
+                span.narrow Active
+                span(style="width: calc(210px - 4em)") Name
+                span Details
+            hr
+            fieldset.repeating_gear
+                div(style="margin-bottom: 3px")
+                    span(style="display: inline-block; width: 3.5em; text-align: center;")
+                        input(type="checkbox" name="attr_active")
+                    input(type="text" style="width: calc(210px - 4em);" name="attr_name")
+                    input(type="text" style="width: calc(100% - 215px)" name="attr_details")
+            
+        div.rep-block
+            h3 Other Items
+            .inv-header 
+                span.narrow Count
+                span(style="width: calc(210px - 4em)") Name
+                span Details
+            hr
+            fieldset.repeating_inventory
+                div(style="margin-bottom: 3px")
+                    input(type="number" name="attr_count" min="0" value="1" step="1")
+                    input(type="text" style="width: calc(210px - 4em);" name="attr_name")
+                    input(type="text" style="width: calc(100% - 215px)" name="attr_details")
+rolltemplate.sheet-rolltemplate-R2R
+    .sheet-container
+        h4.sheet-title {{title}}
+        div.sheet-subtitle {{subtitle}}
+        | {{#rollGreater() result 9}}
+        .sheet-block
+            div.sheet-success
+                div.sheet-mono
+                    span {{roll}}
+                    span #{" = "}
+                    span.sheet-result {{result}}
+                .sheet-status 
+                    span.sheet-result-text SUCCESS
+        div.sheet-details {{success}}
+        | {{/rollGreater() result 9}}
+        | {{#rollBetween() result 7 9}}
+        .sheet-block
+            div.sheet-partial
+                div.sheet-mono
+                    span {{roll}}
+                    span #{" = "}
+                    span.sheet-result {{result}}
+                .sheet-status 
+                    span.sheet-result-text PARTIAL
+        div.sheet-details {{partial}}
+        | {{/rollBetween() result 7 9}}
+        | {{#rollLess() result 7}}
+        .sheet-block
+            div.sheet-failure
+                div.sheet-mono
+                    span {{roll}}
+                    span #{" = "}
+                    span.sheet-result {{result}}
+                .sheet-status 
+                    span.sheet-result-text FAILURE
+        div.sheet-details  {{failure}}
+        | {{/rollLess() result 7}}

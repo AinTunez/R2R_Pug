@@ -1,0 +1,910 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+SC:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Catamaran&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
+
+.sheet-rolltemplate-R2R {
+    * { text-align: center; }
+
+    .sheet-mono {
+        font-family: inherit;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    .sheet-container {
+        background-image: linear-gradient(315deg, #ffffff 0%, #dde6f0 74%);
+        border-radius: 4px;
+        border: 3px double #88888888;
+        box-shadow: 3px 3px #888
+    }
+
+    .sheet-title {
+        font: italic 500 16px normal, "Encode Sans SC";
+        text-shadow: 1px 1px #ccc;
+        background-image: linear-gradient(45deg, #EEE, #DDD);
+        border-bottom: 3px double #88888888;
+    }
+
+    .sheet-subtitle, .sheet-details {
+        font-family: "Catamaran"; padding: 5px;
+
+    }
+
+    .sheet-block {
+
+        margin: 0 auto;
+        display: inline-block;
+        border: 3px double #88888888;    
+        overflow: hidden;
+
+        .inlinerollresult {
+            background: white;
+            position: relative;
+            color: black;
+            height: auto;
+            min-width: 30px;
+            margin: 0 5px;
+            top: 0;
+            text-align: center;
+            border: 1px solid rgb(17 113 124);
+            font-weight: unset;
+        }
+
+        // .inlinerollresult[original-title*="Rolling "], .inlinerollresult[title*="Rolling "] {
+        //     border: 3px double #888;
+        //     background: white;
+        //     box-shadow: inset 0 0 3px dimgray;
+        //     margin: 3px 0;
+        // }
+
+        .sheet-partial, .sheet-failure, .sheet-success {
+            padding: 10px;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        .sheet-success {
+            background-color: lightgreen;
+            .sheet-status { background-color: darkgreen; }
+        }
+
+        .sheet-partial {
+            background-image: linear-gradient(315deg, #fff293 0%, #ffe884 74%);
+            .sheet-status {background-color: darkgoldenrod;}
+        }
+
+        .sheet-failure {
+            color: white;
+            background-image: linear-gradient(147deg, #990000 0%, crimson 74%);
+
+            .inlinerollresult {
+                color: black
+            }
+
+            .sheet-status {background: darkred;}
+        }
+
+        .sheet-result {
+            .inlinerollresult {
+                box-shadow: inset 0 0 3px currentColor;
+                color: black;
+                border-radius: 8px;
+                display: inline-block;
+                margin-left: 0;
+            }
+        }
+
+        .sheet-status {
+            margin-top: 9px;
+            font-weight: bold;
+            border-radius: 4px;
+            font-family: "Encode Sans SC";
+            padding: 5px;
+            display: inline-block;
+            color: white;
+        }
+    }
+}
+
+// --------------
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.rep-block.actions {
+    @each $name, $img in $icons {    
+        input[name=attr_icon][value=#{$name}] ~ span[name=icon],
+        .ra.ra-#{$name} {
+            display: inline-block;
+            background: url("#{$img}");
+            height: 3em;
+            width: 3em;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+@each $tab in $tabs {    
+    .activeTab[value=#{$tab}] ~ .tabContent.#{$tab} {
+        display: block;
+        animation: fade-in 0.2s steps(12, start) 1;
+    }
+    .activeTab[value=#{$tab}] ~ .tabs > button[name=act_show_tab_#{$tab}] {
+        background: white;
+        border-bottom-color: white;
+    }
+}
+
+@each $perk in $perks {
+    .perkListContainer .perkGroup input[name^=attr_perkList_][value=#{$perk}] ~ .perkItem.#{$perk} {
+       display: inline-block !important;
+    }
+}
+
+@each $action in $actions {
+
+}
+
+@each $group in $actionGroups {
+
+}
+
+@each $group in $perkGroups {
+    .perkListDisplay[value=#{$group}] ~ .perkListContainer .perkGroup.#{$group} {
+        display: block;
+    }
+}
+
+.main {
+    
+    font-family: "Roboto";
+    min-width: 800px;
+
+    .infoSection {
+        border: 1px solid #88888888;
+        border-radius: 4px;
+        padding: 5px;
+    }
+
+    .inv-header {
+        >span {
+            display: inline-block;
+        }
+
+        >span {
+            width: 210px;
+        }
+
+        >span.narrow {
+            width: 4em;
+        }
+    }
+
+    .rep-block {
+        margin-bottom: 20px;
+
+        .repcontrol {
+            margin-top: 10px;
+        }
+    }
+
+
+
+    ::placeholder {
+        color: #CCC;
+        opacity: 1;
+    }
+
+    .rep-block.actions {
+        .repcontainer.editmode {
+            .itemcontrol {
+                a, button {
+                    position: absolute;
+                    top: 25px;
+                    transform: translateY(-50%);
+                    z-index: 99999;
+                }
+
+                button {
+                    right: 10px;
+                }
+
+                a {
+                   left: 10px;
+                }
+            }
+        }
+
+        .repitem {
+            border: 1px solid #88888888;
+
+            .icon {
+                border: 1px solid  #88888888;
+                border-radius: 4px;
+            }
+
+            .iconPicker {
+                border: 1px solid  #88888888;
+                height: 10em;
+                overflow-y: scroll;
+                margin: 20px;
+                margin-top: 5px;
+                button {
+                    background: none;
+                    border: none;
+                    height: 1.2857142857em;
+                }
+            }
+
+            > input[name=attr_title] {
+                margin: 10px;
+                text-align: center;
+            }
+            + .repitem {
+                margin-top: 5px;
+            }
+
+            button {
+                vertical-align: middle;
+            }
+
+            .spinner button {
+                margin: 0;
+                padding: 0;
+            }
+
+            .spinner span {
+                width: unset;
+            }
+    
+    
+            @keyframes rotate-animation {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            button.roll {
+                border-radius: 4px;
+                background-color: white;
+                border-width: 1px;
+                padding: 5px;
+                border-color: #88888888;
+                span {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 0 2px;
+                    &.d6 {
+                        font-size: 24px;
+                    }
+                }
+                &:hover {
+                    box-shadow: inset 0 0 3px grey;
+                    span.d6 {
+                        animation: rotate-animation 1.5s steps(60, start) infinite;
+                        animation-timing-function: ease
+                    }
+                }
+            }
+        }
+
+        input.editing {
+            + button.edit {
+                background: none;
+                border:none;
+                font-size: 30px;
+                &::before {
+                    content: "W";
+                    font-family: "Pictos";
+                }
+                position: absolute;
+                top: 25px;
+                right: 10px;
+                transform: translateY(-50%);
+            }
+
+            @keyframes blink-animation {
+                0% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            &[value=true] {
+                +button.edit {
+                    animation: blink-animation 1.5s steps(50, start) infinite;
+                    ~.actionBuilder {
+                        display: block;
+                        animation: fade-in 0.2s steps(12, start) 1;
+                    }
+                }
+            }
+            
+        }
+
+        .actionBuilder {
+            display: none;
+            background: white;
+            padding: 20px;
+            padding-top: 10px;
+            z-index: 99999999;
+    
+            .closeBtn {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+    
+            .fullwidth {
+                input {
+                    width: calc(100% - 60px);
+                }
+            }
+    
+            .actParamRow {
+    
+                &.inline {
+                    display: inline-block;
+                    margin-right: 20px;
+                }
+    
+                input {
+                    margin: 1px 2px 
+                }
+    
+                >span:first-child {
+                    display: inline-block;
+                    width: 50px;
+                    text-align: right;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+    
+ 
+
+
+    .actionListButtons {
+        display: inline-block;
+        width: 90px;
+        margin-right: 40px;
+        vertical-align: top;
+        button {
+            font-family: "Encode Sans SC";
+            display: block;
+            width: 100%;
+            margin: 2px 0;
+            border-radius: 4px;
+            text-transform: capitalize;
+        }
+    }
+
+    .actionGroupList {
+        display: inline-block;
+        
+        width: calc(100% - 140px);
+
+        .actionGroup {
+
+            display: none;
+            flex-wrap: wrap;
+
+            .actionBlock {
+                position: relative;
+                display: inline-block;
+                border: 1px solid #888;
+                padding: 5px;
+                padding-bottom: 52px;
+                margin: 5px;
+                width: 200px;
+                vertical-align: top;
+                border-radius: 4px;
+                box-shadow: 2px 2px 2px;
+
+                &.perkActionBlock {
+                    display: none;
+
+                    >button:first-child {
+                        color: green;
+                        cursor: pointer;
+                    }
+                }
+
+                .actionButtons {
+                    position: absolute;
+                    bottom: 5px;
+                    width: calc(100% - 10px);
+                }
+
+                >button {
+                    vertical-align: middle;
+                }
+
+                .clearfix {
+                    height: 10px;
+                }
+
+                >button:first-child {
+                    font-weight: bold;
+                    border: none;
+                    background: none;
+                    cursor: default;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    padding: 0;
+                    font-size: 16px;
+
+                    &::after {
+                        content: "";
+                    }
+                }
+
+                .description {
+                    font-style: italic;
+                    min-height: 36px;
+                    // > span {
+                    //     vertical-align: middle;
+                    // }
+                }
+            }
+        }
+    }
+
+
+    .qualities {
+        input {
+            width: 100%;
+            margin: 4px 0
+        }
+
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+
+    .pictos {
+        font-family: "Pictos";
+    }
+
+    .d6 {
+        font-family: "dicefontd6";
+    }
+
+    hr {
+        border-color: rgba(0, 0, 0, 0.5);
+        margin: 10px 0;
+    }
+
+    h3 {
+        vertical-align: bottom;
+    }
+
+
+
+    .spinner {
+        display: inline-block;
+        text-align: center;
+
+        .pictos {
+            color: darkgrey;
+        }
+
+        &.inline {
+            * {
+                display: inline-block;
+            }
+        }
+
+        button {
+            background: none;
+            border: none;
+            width: 1em;
+        }
+
+
+        span {
+            display: inline-block;
+            width: 1em;
+
+            &[name^="attr_"] {
+                transform: translateX(2px);
+                width: 1.5em;
+            }
+        }
+    }
+
+    button[type="roll"] {
+        font-size: 12px;
+
+        span {
+            vertical-align: bottom;
+        }
+
+        &::before {
+            font-size: 1.3em;
+            font-family: "dicefontd6";
+            content: "";
+        }
+
+        &.rollBtn::before {
+            content: "FF";
+        }
+
+    }
+
+    .numDomDisplay {
+        display: inline-block;
+        .header {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+            font-weight: bold;
+        }
+    }
+
+    .vitDisplay {    
+        .vitItemBlock {
+            display: grid;
+            grid-template-columns: 75px calc(100% - 75px);
+            // border-bottom: 1px solid #888;
+            padding: 5px;
+
+            > div:first-child {
+                font-size: 20px;
+                font-family: "Encode Sans SC";
+            }
+
+            .vitItem {
+                .header {
+                    text-align: right;
+                    width: 70px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .ailments {
+        text-align: center;
+        .repcontrol, .repcontainer {
+            display: none;
+        }
+
+        span {
+            display: none;
+            border: 1px solid crimson;
+            padding: 2px 4px;
+            margin: 0 1px;
+            color: crimson;
+            font-weight: bold;
+        }
+
+        .repcontainer[data-groupname="repeating_injuries"]:not(:empty) + .repcontrol + span {
+            display: inline-block;
+        }
+        .repcontainer[data-groupname="repeating_illnesses"]:not(:empty) + .repcontrol + span {
+            display: inline-block;
+        }
+    }   
+
+    .statusBar {
+        font-family: "Encode Sans SC";
+        border-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-top: 1px;
+        padding: 2px;
+        background: #EEEEEE;
+        border: 1px solid #88888888;
+
+        .vit, .stat {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .bold {
+            margin: 0;
+        }
+
+        span[name^="attr_"] {
+            font-family: "Major Mono Display";
+        }
+    }
+
+    .ailments {
+        display: inline-block;
+        margin-left: 20px;
+        .repcontrol, .repcontainer {
+            display: none;
+        }
+
+        span {
+            display: none;
+            color: crimson;
+            border: 1px solid currentColor;
+            padding: 2px 4px;
+            margin: 0 1px;
+            font-weight: bold;
+        }
+
+        span.healthy {
+            display: inline-block;
+            color: green;
+            border: 1px solid currentColor;
+        }
+
+        .repcontainer[data-groupname="repeating_injuries"]:not(:empty) {
+            ~ span.injured {
+                display: inline-block;
+            }
+
+            ~ span.healthy {
+                display: none;
+            }
+        }
+        .repcontainer[data-groupname="repeating_illnesses"]:not(:empty) {
+            ~ span.sick {
+                display: inline-block;
+            }
+
+            ~ span.healthy {
+                display: none;
+            }
+        }
+    }
+
+
+    .statDisplay {
+
+        h3 {
+            text-align: center;
+        }
+
+        display: inline-block;
+        vertical-align: bottom;
+        
+        .rollBtn {
+            width: 30px;
+            margin: 0 10px;
+            vertical-align: middle;
+            padding: 0;
+            height: 18px;
+            
+            &::before {
+                content: "ROLL";
+            }
+        }
+
+        .avail {
+            border-bottom: 1px solid black;
+        }
+
+        .statRow {
+            .header {
+                display: inline-block;
+                width: 70px;
+                text-align: right;
+                text-transform: capitalize;
+            }
+        }
+
+        
+    }
+
+    .tabs {
+        font-family: "Encode Sans SC";
+        margin-bottom: 10px;
+        background: #EAEAEA;
+        padding-top: 15px;
+
+        button {
+            display: inline-block;
+            background: linear-gradient(white, white, #CCC);
+            border: 1px solid darkgray;
+            margin-left: 4px;
+            padding: 5px 10px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            font-size: 16px;
+            text-transform: capitalize;
+            display: inline-block;
+        }
+    }
+
+    .tabContent {
+        display: none;
+    }
+
+    .perkBrowser {
+        .perkBrowserHeader {
+            > * {
+                display: inline-block;
+                vertical-align: unset;
+            }
+
+            > h3 {
+                width: 200px;
+            }
+        }
+
+        .perkGroup {
+            display: none;
+
+            .flexContainer {
+                display: inline-flex;
+                flex-direction: column;
+                width: 200px;
+
+                .perkList {
+                    width: auto;
+                    height: 237px;
+                    font-family: "Roboto Condensed";
+                }
+            }
+    
+            .perkItem {
+                display: none;
+                vertical-align: top;
+                width: calc(100% - 225px);
+                margin-left: 0;
+                padding: 0 10px;
+
+                .req {
+                    font-style: italic;
+                }
+                
+                > div:first-child {
+                    border-bottom: 1px solid #888;
+                    margin-bottom: 3px;
+                    height: 30px;
+                    > :first-child {
+                        line-height: 25px;
+                        font-family: "Roboto";
+                        float:left;
+                        font-weight: bold;
+                    }
+
+                    >:last-child {
+                        float:right
+                    }
+                }
+
+                > ul {
+                    margin-left: 0;
+
+                    > li {
+                        list-style: none;
+                    }
+
+                    > li + li {
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+
+        #perkListSelect {
+            text-transform: capitalize;
+            font-family: "Encode Sans SC";
+            width: 200px;
+        }
+    }
+
+    button.perkMacro[type="roll"] {
+        display: none;
+        box-shadow: 0 0 3px 3px greenyellow;
+    }
+
+    .activePerkDetails {
+        .repitem {
+            margin-bottom: 3px;
+            // border-bottom: 1px solid #888;
+        }
+        button[type="action"] {
+            font-family: "Encode Sans SC";
+            border: 1px solid #888;
+            background: none;
+            margin: 0;
+            padding: 0 3px;
+
+        }
+    }
+
+    .rep_activeperks {
+        textarea {
+            height: 3em;
+            width: calc(100% - 10px);
+            resize: none;
+            margin-bottom: 0;
+        }
+        .repcontrol_edit {
+            display: none;
+        }
+        .btn.repcontrol_add {
+            display: none;
+        }
+    }
+
+    .overview_gear {
+
+        margin-bottom: 25px;
+
+        .repitem {
+            display: inline-block;
+            margin-bottom: 3px;
+            margin-right: 3px;
+
+            > button {
+                border: 1px solid #888;
+                background: transparent;
+                vertical-align: middle;
+            }
+
+            > input:not(:checked) + button {
+                display: none;
+            }
+        }
+
+        .repcontrol {
+            display: none;
+        }
+    }
+
+    .activePerkDisplay {
+        min-height: 54px;
+
+        .repcontainer {
+            min-height: 25px;
+        }
+
+
+        // .repcontrol_edit {
+        //     display: none;
+        // }
+
+        .repitem {
+            display: inline-block;
+            border: 1px solid #888;
+            margin-bottom: 3px;
+            margin-right: 3px;
+    
+            >button {
+                background: transparent;
+                border: transparent;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .statDisplay {
+        display: inline-block;
+        margin: 0 5px;
+
+        >span:first-child {
+            font-weight: bold;
+        }
+    }
+}

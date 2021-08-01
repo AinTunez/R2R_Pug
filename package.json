@@ -1,0 +1,16 @@
+{
+  "name": "r2r_pug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jsdom": "^16.6.0",
+    "pug": "^3.0.2",
+    "sass": "^1.36.0"
+  }
+}

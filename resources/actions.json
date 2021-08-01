@@ -1,0 +1,229 @@
+[{
+        "name": "general",
+        "list": [{
+                "name": "Engage",
+                "desc": "Directly confront the opponent ahead of you.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Body",
+                    "header": "$C engages the target.",
+                    "success": "Target takes damage.",
+                    "partial": "Target and $C both take damage.",
+                    "failure": "$C takes damage."
+                }
+            },
+            {
+                "name": "Act Defensively",
+                "desc": "Block, dodge, retreat, or regroup to assist an ally.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Wits",
+                    "header": "$C defends.",
+                    "success": "$C safely disengages from combat OR finds a better vantage point and gains +1 to their next combat action. +1 can be passed to an ally if they're in communication.",
+                    "partial": "$C takes no damage OR takes half damage and disengages from combat.",
+                    "failure": "$C takes full damage."
+                }
+            },
+            {
+                "name": "Read The Room",
+                "desc": "Observe your surroundings and analyze the situation.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Wits",
+                    "header": "$C takes in their surroundings.",
+                    "success": "$C detects a lot. GM must honestly answer 3 player-chosen questions about the current scenario, and all Actions that relate to those answers get a +1. This lasts until the end of the scenario.",
+                    "partial": "$C gets some things right and some things wrong. GM must honestly answer 1 player-chosen about the current scenario, but doesn’t need to give a complete answer. The next Action that is related to that answer gets a +1.",
+                    "failure": "$C totally misreads the situation, and doing so may have consequences."
+                }
+            }
+        ]
+    },
+    {
+        "name": "physical",
+        "list": [{
+                "name": "Traverse Terrain",
+                "desc": "Cross tough terrain.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Body",
+                    "header": "$C tries to cross some tough terrain.",
+                    "success": "$C successfully crosses the terrain without trouble.",
+                    "partial": "$C crosses the terrain, but something goes wrong.",
+                    "failure": "$C fails to cross the terrain and takes damage as a result."
+                }
+            },
+            {
+                "name": "Destroy Obstacle",
+                "desc": "Destroy an object blocking the way.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Body",
+                    "header": "$C tries to destroy an obstacle.",
+                    "success": "$C destroys the obstacle. The way forward is clear.",
+                    "partial": "$C destroys the obstacle, but unforeseen problems present themselves without its presence.",
+                    "failure": "$C fails to destroy the obstacle. Reality ensues."
+                }
+            },
+            {
+                "name": "Become Obstacle",
+                "desc": "Obstruct the path of an opposing force without directly combating it.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Body",
+                    "header": "$C tries to obstruct the path.",
+                    "success": "$C bars the way. The opposing force is held off and may stop altogether.",
+                    "partial": "$C bars the way, but may take damage. The opposing force is undaunted.",
+                    "failure": "$C fails to obstruct the path and is swept aside or along with it."
+                }
+            }
+        ]
+    },
+    {
+        "name": "clandestine",
+        "list": [{
+                "name": "Hide A Secret",
+                "desc": "Mask your intentions and keep your opponents guessing.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Wits",
+                    "header": "$C tries to keep it cool under pressure.",
+                    "success": "$C suppresses their emotions and keeps cool. Nobody is the wiser.",
+                    "partial": "The opponent has their suspicions, but can’t accurately place where those suspicions lie.",
+                    "failure": "The opponent reads $C like a book, and can probably guess most of the facts that $C is trying to conceal."
+                }
+            },
+            {
+                "name": "Detect Truth",
+                "desc": "Inspect your opponent and find out if they’re holding anything back.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Wits",
+                    "header": "$C tries figure out if the opponent is hiding anything.",
+                    "success": "$C reads their opponent like a book. GM gives a rough-but-accurate outline of what the person is hiding, if anything.",
+                    "partial": "$C can tell whether the opponent is holding something back, but the ultimate truth is out of reach.",
+                    "failure": "$C has no suspicion of being left in the dark, though their opponent can tell $C tried."
+                }
+            },
+            {
+                "name": "Bluff The Listener",
+                "desc": "Tell a lie, and be confident about it.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Charm",
+                    "header": "$C tries to bluff.",
+                    "success": "The listener believes what they’ve been told, as long as the lie is not later contradicted or the listener isn't otherwise convinced by another party.",
+                    "partial": "The listener believes the lie, but is not entirely convinced of its authenticity or remembers $C as the source of the lie.",
+                    "failure": "The listener is unconvinced, and grows more suspicious of $C's intentions."
+                }
+            }
+        ]
+    },
+    {
+        "name": "smarts",
+        "list": [{
+                "name": "Get The Facts",
+                "desc": "Look into a subject, field of study, or situation. Attempt to glean knowledge about specific facts.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Smarts",
+                    "header": "$C attempts to glean knowledge.",
+                    "success": "$C gains the knowledge they sought. GM must honestly answer 3 player-chosen questions relevant to inquiry.",
+                    "partial": "$C gains some knowledge. GM must honestly answer 1 player-chosen question relevant to inquiry. However, the inquiry could take too long or draw attention, or receive a vague answer.",
+                    "failure": "$C's inquiry raises more questions than answers, and any materials they may have been using for the inquiry are ruined or lost."
+                }
+            },
+            {
+                "name": "Obtain Understanding",
+                "desc": "Ponder an aspect of the scenario to gain understanding about its background, context, or relevance.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Smarts",
+                    "header": "$C inspects an aspect of the current scenario to gain understanding about its background/context/relevance.",
+                    "success": "$C perfectly understands the aspectå and is able to find ways to apply this understanding. Gain +1 to any Action that is relevant to the knowledge obtained as a result of the Action. This bonus lasts for the duration of the scenario.",
+                    "partial": "$C gains understanding, but it's incomplete or flawed. Gain +1 to the next Action that is able to use this knowledge. But, after that Action, the flaw in the understanding is revealed, and use of that knowledge comes with consequences.",
+                    "failure": "$C's ignorance of the situation hinders their abilities. Their next action suffers -1 due to the resulting problems."
+                }
+            },
+            {
+                "name": "Make A Plan",
+                "desc": "Craft a plan for the current situation or a possible future event.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Smarts",
+                    "header": "$C tries to craft a plan.",
+                    "success": "$C's strategy is actionable and appears to be flawless. Both you, and all allies (if in contact with them), gain +1 to all Actions that are in accordance with the plan. This lasts until the end of the last scenario relevant to the plan.",
+                    "partial": "$C's strategy appears sound, but doesn’t account for probability and can’t be understood by others. $C gets +1 to all Actions that are in accordance with the plan, but -1 to all Actions that don’t follow the plan. This lasts until the end of the current scenario.",
+                    "failure": "The situation resists being reduced to an actionable strategy. A complication emerges that disrupts the plan the character was trying to suggest."
+                }
+            }
+        ]
+    },
+    {
+        "name": "charm",
+        "list": [{
+                "name": "Crowd Control",
+                "desc": "Influence a group of listeners to take a basic course of action or adopt a specific, reasonable belief.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Charm",
+                    "header": "$C tries to influence a group of listeners.",
+                    "success": "The crowd is swayed, and will offer $C immediate support so long as it’s not against their own self-interests.",
+                    "partial": "The crowd is swayed, but they do not perfectly perform what $C wants them to do, or their belief is flawed.",
+                    "failure": "The crowd is not swayed, and grows annoyed. Some members may even become hostile if they have further reason to dislike $C."
+                }
+            },
+            {
+                "name": "Convince Somebody",
+                "desc": "Persuade the listener to adopt a course of action or believe in your sincerity.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Charm",
+                    "header": "$C tries to convince the target.",
+                    "success": "The listener is convinced, and can be influenced to do something as long as it’s not against their self-interest (e.g., self-preservation)",
+                    "partial": "The listener is convinced, but could be suspicious of the character doing the convincing or cannot perform the task given to them satisfactorily.",
+                    "failure": "The listener is not convinced, and grows hostile to the perceived manipulation."
+                }
+            }
+        ]
+    },
+    {
+        "name": "strange",
+        "list": [{
+                "name": "Comprehend The Strange",
+                "desc": "Bend your mind around the Strange to understand more of its effects and gain lasting advantages.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Strange",
+                    "header": "$C reaches out to the Strange with their mind.",
+                    "success": "$C is able to understand the capabilities of the Strange, and can add +1 to any Action that uses this understanding for the rest of the scenario.",
+                    "partial": "$C can understand the Strange, but is strained by the effort. Gain a +1 when using your understanding for the rest of the scenario, but suffer -1 on the next Action of any type.",
+                    "failure": "$C's mind reels from connection to the Strange. For the remainder of the scenario, they suffer a -1 to all Actions as a result of the disorientation."
+                }
+            },
+            {
+                "name": "Strange Manipulation",
+                "desc": "Use the Strange already around you to accomplish an immediate task.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Strange",
+                    "header": "$C tries to manipulate the Strange to accomplish a task.",
+                    "success": "The Strange bends to $C's will and they are able to accomplish the objective.",
+                    "partial": "The Strange unwillingly abides. $C accomplishes their goal, but use of the Strange complicates the situation in some way.",
+                    "failure": "The Strange rejects $C's manipulation, and exacts a punishment for their hubris."
+                }
+            },
+            {
+                "name": "Strange Protection",
+                "desc": "Bend whatever you have at your disposal to shield yourself from a Strange assault.",
+                "macro": {
+                    "roll": "2d6",
+                    "stat": "Strange",
+                    "header": "$C tries to manipulate the Strange to accomplish a task.",
+                    "success": "$C is protected as well as they can muster. Manifest protection equal to the Strange Stat (minimum of 1), or wholly ignore the Strange’s effect.",
+                    "partial": "The Strange effect levied against $C is weakened, but not totally mitigated.",
+                    "failure": "$C is unable to protect themself from the assault and suffers the full effect. $C also suffers -1 to their next Action, as they remain disoriented from resisting a force they don't understand."
+                }
+            }
+        ]
+    }
+]
