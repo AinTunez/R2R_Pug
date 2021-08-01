@@ -89,7 +89,8 @@ i.ra.ra-acorn
                 +hiddenInput("icon")(value="i-help")
                 +hiddenInput("editing")(class="editing" value="true")
                 +actionBtn("edititem")(class="edit")
-                span.ra.ra-fw.ra-3x.icon(name="attr_icon" style="transform: rotate(180deg); vertical-align: middle; margin-left: 25px;")
+                span(style="border: 1px solid black; vertical-align: middle; margin-left: 25px; height: 3em; width: 3em; display: inline-block;")
+                    span.ico(name="icon" style="height: 3em; width: 3em; filter: drop-shadow(-3px -3px #CCC)")
                 input(type="text" name="attr_title" placeholder="Action Name")
                 +actionBtn("roll")(class="roll")
                     span.d6 l

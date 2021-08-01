@@ -41,16 +41,13 @@ const stats = getResource("stats")
 const vits = getResource("vits")
 const tabs = getResource("tabs")
 
-function svg(path) {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="1024px" height="1024px" viewBox="0 -64 1024 1024"><path d="${path}"/></svg>`
-}
-
-const icons = {}
-for (const icon of JSON.parse(fs.readFileSync("rpgawesome.json"))) {
-    // const name = icon["_data-tags"]
-    // const path = icon["_d"]
-    // fs.writeFileSync("resources/icons/" + name + ".svg", svg(path))
-    // icons[name] = svg(path)
+const icons = JSON.parse(fs.readFileSync("resources/icons.json"))
+function concatIcons(scss) {
+    let output = []
+    for (const [key, val] of Object.entries(icons)) {
+        output.push(...val)
+    }
+    return scss ? `("${output.join(`","`)}")` : output
 }
 
 const data = {
@@ -64,7 +61,8 @@ const data = {
 
 function workerText() {
     return [
-        `const icons = ["${Object.keys(icons).join(`","`)}"]`,
+        `const iconGroups = ${JSON.stringify(Object.keys(icons))}`,
+        `const icons = ${JSON.stringify(concatIcons())};`,
         `const vits = ${JSON.stringify(vits)};`,
         `const perks = ${JSON.stringify(perks)};`,
         `const actions = ${JSON.stringify(actions)};`,
@@ -79,11 +77,12 @@ fs.writeFileSync("dist/out.html", html + `\n<script type="text/worker">\n${worke
 
 
 const scssText = [
-    `$icons: ${JSON.stringify(icons).replace("}",")").replace("{","(")};`,
+    `$icons: ${concatIcons(true)};`,
     `$perks: ${reduce(perks, true)};`,
     `$actions: ${reduce(actions, true)};`,
     `$perkGroups: ${reduce(perks)};`,
     `$actionGroups: ${reduce(actions)};`,
+    `$iconGroups: ${Object.keys(icons).join(",")};`,
     `$tabs: ${tabs.map(tab => tab.name).join(", ")};`,
     fs.readFileSync("main.scss"),
     fs.readFileSync("rpgawesome.scss")

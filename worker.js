@@ -89,9 +89,15 @@ on("clicked:repeating_actions:edititem", () => {
     })
 })
 
+for (const group of iconGroups) {
+    on("clicked:repeating_actions:icongroup" + group, () => {
+        setAttrs({"repeating_actions_icongroup": group})
+    })
+}
+
 for (const icon of icons) {
     on("clicked:repeating_actions:icon" + icon, () => {
-        setAttrs({"repeating_actions_icon": `<span>${icon}</span>`})
+        setAttrs({"repeating_actions_icon": icon})
     })
 }
 
