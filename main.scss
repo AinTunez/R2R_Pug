@@ -129,9 +129,9 @@ $h: 2em;
     border: none;
     height: $h;
     width: $h;
-    background-size: contain;
-    background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-position-x: 0;
     transform: rotate(180deg);
 }
 
@@ -151,11 +151,13 @@ $h: 2em;
     }
 }
 
-@each $name in $icons {
+@for $i from 1 through length($icons) {
+    $name: nth($icons, $i);
+    $len: length($icons);
 
     input[name=attr_icon][value=#{$name}]~span span[name=icon],
     .ico.#{$name} {
-        background-image: url('https://cdn.jsdelivr.net/gh/AinTunez/R2R_Pug@master/sprite.svg##{$name}-view') !important;
+        background-image: url('https://raw.githubusercontent.com/AinTunez/R2R_Pug/master/sprite.svg##{$name}');
     }
 }
 
