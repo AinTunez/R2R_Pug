@@ -132,12 +132,13 @@ $h: 2em;
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: 0;
-    transform: rotate(180deg);
+    transform: scaleY(-1);
 }
 
 .iconPicker {
     margin: 20px;
     margin-top: 5px;
+
     .section {
         display: none;
         overflow-x: scroll;
@@ -145,9 +146,15 @@ $h: 2em;
     }
 
     @each $group in $iconGroups {
-        input[value=#{$group}] ~ .section.#{$group} {
+        input[value=#{$group}]~.section.#{$group} {
             display: block;
         }
+    }
+
+    button.ico {
+        width: 2em;
+        height: 2em;
+        padding: 0;
     }
 }
 
@@ -155,7 +162,7 @@ $h: 2em;
     $name: nth($icons, $i);
     $len: length($icons);
 
-    input[name=attr_icon][value=#{$name}]~span span[name=icon],
+    input[name=attr_icon][value=#{$name}] ~ div span[name=icon],
     .ico.#{$name} {
         background-image: url('https://raw.githubusercontent.com/AinTunez/R2R_Pug/master/sprite.svg##{$name}');
     }
@@ -247,7 +254,7 @@ $h: 2em;
                 a,
                 button {
                     position: absolute;
-                    top: 25px;
+                    top: 36.5px;
                     transform: translateY(-50%);
                     z-index: 99999;
                 }
@@ -265,12 +272,30 @@ $h: 2em;
         .repitem {
             border: 1px solid #88888888;
 
+            .selectedIcon {
+                overflow: hidden;
+                border: 1px solid #88888888;
+                vertical-align: middle;
+                margin-left: 25px;
+                height: 3em;
+                width: 3em;
+                display: inline-block;
+                border-radius: 4px;
+                padding: 5px;
+
+                .ico {
+                    height: 3em;
+                    width: 3em;
+                    // filter: drop-shadow(-3px -3px #CCC)
+                }
+            }
+
             .icon {
                 border: 1px solid #88888888;
                 border-radius: 4px;
             }
 
-            >input[name=attr_title] {
+            input[name=attr_title] {
                 margin: 10px;
                 text-align: center;
             }
@@ -282,16 +307,6 @@ $h: 2em;
             button {
                 vertical-align: middle;
             }
-
-            .spinner button {
-                margin: 0;
-                padding: 0;
-            }
-
-            .spinner span {
-                width: unset;
-            }
-
 
             @keyframes rotate-animation {
                 0% {
@@ -343,7 +358,7 @@ $h: 2em;
                 }
 
                 position: absolute;
-                top: 25px;
+                top: 36.5px;
                 right: 10px;
                 transform: translateY(-50%);
             }

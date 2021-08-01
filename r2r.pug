@@ -1,8 +1,6 @@
 include mixins
 
 +hiddenInput("activePerks")(class="activePerks")
-div.ico.palm-tree
-
 .main
     input(type="hidden" class="activeTab" name="attr_activeTab" value="overview")
     .statusBar
@@ -89,13 +87,14 @@ div.ico.palm-tree
                 +hiddenInput("icon")(value="i-help")
                 +hiddenInput("editing")(class="editing" value="true")
                 +actionBtn("edititem")(class="edit")
-                span(style="border: 1px solid black; vertical-align: middle; margin-left: 25px; height: 3em; width: 3em; display: inline-block;")
-                    span.ico(name="icon" style="height: 3em; width: 3em; filter: drop-shadow(-3px -3px #CCC)")
-                input(type="text" name="attr_title" placeholder="Action Name")
-                +actionBtn("roll")(class="roll")
-                    span.d6 l
-                +pictos("&")(style="display: inline-block; margin-left: 6px; margin-right: 2px;")
-                input(type="number" name="attr_mod" value="0" step="1")
+                div(style="margin: 10px 0")
+                    span.selectedIcon
+                        span.ico(name="icon")
+                    input(type="text" name="attr_title" placeholder="Action Name")
+                    +actionBtn("roll")(class="roll")
+                        span.d6 l
+                    +pictos("&")(style="display: inline-block; margin-left: 6px; margin-right: 2px;")
+                    input(type="number" name="attr_mod" value="0" step="1")
                 .actionBuilder
                     .actParamRow.fullwidth
                         span Subtitle

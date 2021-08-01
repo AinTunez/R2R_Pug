@@ -3,8 +3,8 @@
 const pug = require("pug");
 const fs = require("fs");
 const sass = require("sass");
-const svgstore = require('svgstore');
-const path = require('path');
+const svgo = require('svgo');
+
 
 // Where are Feather icons available from the npm package?
 
@@ -16,7 +16,8 @@ const iconData = JSON.parse(fs.readFileSync("resources/rpgawesome.json")).map(it
         path: item["_d"],
     }
 })
-fs.writeFileSync("sprite.svg", pug.compileFile("svg.pug", {pretty: true})({iconData: iconData, iconCount: iconData.length}))
+const svgstr = pug.compileFile("svg.pug", {pretty: true})({iconData: iconData, iconCount: iconData.length})
+fs.writeFileSync("sprite.svg", svgstr)
 
 function getResource(name) {
     const text = fs.readFileSync(`resources/${name}.json`)
