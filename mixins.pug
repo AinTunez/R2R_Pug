@@ -69,9 +69,8 @@ mixin perkInfo(info)
 mixin rollBtn(macro, text, modifier)
     button(type="roll") #{text}
 
-mixin ra(glyph)
-    - const g = glyph.split(" ").map(e => "ra-" + e).join(" ")
-    i.ra(class=g)
+mixin glyph(name)
+    img(src=`https://raw.githubusercontent.com/AinTunez/R2R_Pug/master/sprite.svg\u0023${name}`)&attributes(attributes)
 
 mixin iconPicker
     br

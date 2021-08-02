@@ -3,11 +3,6 @@
 const pug = require("pug");
 const fs = require("fs");
 const sass = require("sass");
-const svgo = require('svgo');
-
-
-// Where are Feather icons available from the npm package?
-
 
 let i = -1024
 const iconData = JSON.parse(fs.readFileSync("resources/rpgawesome.json")).map(item => {
